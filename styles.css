@@ -1,0 +1,95 @@
+:root {
+  --red: #FF3B30;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray: #F5F5F5;
+  --ink: #1A1A1A;
+  --headline: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--body); }
+
+.grid-overlay {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: calc(100vw / 12) 100%;
+}
+
+.site-header, .layout, .site-footer { position: relative; z-index: 1; }
+.site-header {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  padding: 1rem 2rem; border-bottom: 2px solid var(--black);
+}
+.brand { font-family: var(--headline); font-size: 1.2rem; letter-spacing: 0.08em; }
+.meta { display: flex; gap: 1rem; align-items: center; font-size: 0.82rem; text-transform: uppercase; }
+
+.layout {
+  min-height: calc(100vh - 116px);
+  display: grid;
+  grid-template-columns: 3fr 6fr 3fr;
+  gap: 0;
+}
+.left-panel, .timeline-panel, .detail-panel { padding: 2rem; }
+.left-panel { background: var(--gray); border-right: 1px solid var(--black); }
+.timeline-panel { border-right: 1px solid var(--black); }
+.detail-panel { background: var(--black); color: var(--white); }
+
+h1, h2, h3 { font-family: var(--headline); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem; }
+h1 { font-size: 2rem; line-height: 0.95; max-width: 12ch; }
+.lede { max-width: 26ch; line-height: 1.45; }
+
+.controls { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
+label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+input, select, textarea {
+  width: 100%; border: 1px solid var(--black); padding: 0.65rem; font: inherit;
+  background: var(--white); color: var(--ink);
+}
+
+.btn {
+  background: var(--red); color: var(--white); border: 1px solid var(--black);
+  font-family: var(--headline); text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.7rem 0.9rem; cursor: pointer;
+}
+.btn.ghost { background: transparent; color: inherit; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 1.2rem; }
+.stats div { border-top: 2px solid var(--black); padding-top: 0.7rem; }
+.stats span { display: block; font-family: var(--headline); font-size: 1.5rem; }
+.stats small { font-size: 0.68rem; letter-spacing: 0.1em; }
+
+.timeline-head { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.timeline li {
+  display: grid; grid-template-columns: 90px 1fr; gap: 1rem; border-top: 1px solid var(--black); padding-top: 0.8rem;
+  cursor: pointer;
+}
+.timeline .date { font-family: var(--headline); font-size: 0.9rem; }
+.timeline .card-title { font-family: var(--headline); font-size: 1.1rem; text-transform: uppercase; }
+.timeline .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.45rem; }
+.timeline .tag { border: 1px solid var(--black); padding: 0.12rem 0.4rem; font-size: 0.68rem; text-transform: uppercase; }
+.timeline li.active { border-top: 3px solid var(--red); }
+
+.detail-content { display: grid; gap: 0.8rem; font-size: 0.95rem; line-height: 1.5; }
+.detail-content ul { margin: 0; padding-left: 1rem; }
+
+.site-footer {
+  border-top: 2px solid var(--black); padding: 0.8rem 2rem; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+dialog { border: 2px solid var(--black); width: min(560px, 90vw); }
+menu { display: flex; justify-content: flex-end; gap: 0.6rem; padding: 0; margin: 1rem 0 0; }
+
+body.invert { background: var(--ink); color: var(--white); }
+body.invert .left-panel { background: #111; border-right-color: var(--white); }
+body.invert .timeline-panel { border-right-color: var(--white); }
+body.invert .site-header, body.invert .site-footer { border-color: var(--white); }
+body.invert input, body.invert select, body.invert textarea { background: #222; color: var(--white); border-color: var(--white); }
+body.invert .timeline li { border-top-color: var(--white); }
+body.invert .timeline .tag { border-color: var(--white); }
+
+@media (max-width: 1120px) {
+  .layout { grid-template-columns: 1fr; }
+  .left-panel, .timeline-panel { border-right: none; border-bottom: 1px solid var(--black); }
+}

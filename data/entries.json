@@ -1,0 +1,15 @@
+[
+  {
+    "date": "2026-02-27",
+    "title": "Repository Setup",
+    "summary": "In the opening movement, the journal’s frame was established: a disciplined grid, a restrained palette, and the first lines of an archive designed to make daily work legible.",
+    "items": [
+      "Created repository",
+      "Established Swiss-style visual system",
+      "Prepared baseline content structure"
+    ],
+    "tags": ["setup", "design", "ops"],
+    "hours": 2.5,
+    "source": "auto"
+  }
+]

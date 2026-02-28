@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kriya — Daily Work Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">KRIYA / JOURNAL</div>
+    <div class="meta">
+      <span id="todayLabel"></span>
+      <button id="themeToggle" class="btn ghost">INVERT</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="left-panel">
+      <h1>Daily Work Ledger</h1>
+      <p class="lede">Objective log of completed work, updated every day at 21:00.</p>
+      <div class="controls">
+        <label for="search">SEARCH</label>
+        <input id="search" type="text" placeholder="Filter by keyword" />
+
+        <label for="tagFilter">TAG</label>
+        <select id="tagFilter">
+          <option value="all">ALL</option>
+        </select>
+
+        <button id="addEntry" class="btn">+ NEW ENTRY</button>
+      </div>
+
+      <section class="stats">
+        <div><span id="totalEntries">0</span><small>ENTRIES</small></div>
+        <div><span id="streak">0</span><small>DAY STREAK</small></div>
+        <div><span id="hours">0</span><small>HOURS LOGGED</small></div>
+      </section>
+    </aside>
+
+    <section class="timeline-panel">
+      <div class="timeline-head">
+        <h2>Chronology</h2>
+        <input id="range" type="range" min="0" max="100" value="100" />
+      </div>
+      <ul id="timeline" class="timeline"></ul>
+    </section>
+
+    <section class="detail-panel" id="detailPanel">
+      <h3>Entry Detail</h3>
+      <div id="detailContent" class="detail-content">Select an entry to inspect details.</div>
+    </section>
+  </main>
+
+  <dialog id="entryModal">
+    <form id="entryForm" method="dialog">
+      <h3>New Journal Entry</h3>
+      <label>Date <input name="date" type="date" required></label>
+      <label>Title <input name="title" type="text" required></label>
+      <label>Summary <textarea name="summary" rows="3" required></textarea></label>
+      <label>Work items (comma-separated) <input name="items" type="text" placeholder="Design audit, deploy fixes"></label>
+      <label>Tags (comma-separated) <input name="tags" type="text" placeholder="design, dev, ops"></label>
+      <label>Hours <input name="hours" type="number" step="0.5" min="0"></label>
+      <menu>
+        <button value="cancel" class="btn ghost" type="reset">Cancel</button>
+        <button value="default" class="btn" type="submit">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <span>Swiss / International Style • Precision Grid • Asymmetric Composition</span>
+  </footer>
+
+  <script src="journal.js"></script>
+</body>
+</html>

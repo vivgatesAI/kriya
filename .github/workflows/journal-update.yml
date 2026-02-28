@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate daily journal entry at 9 PM New York
+      - name: Generate daily journal entry (aggregates prior 24h at 9 PM New York)
         run: node scripts/update-journal.mjs
 
       - name: Commit changes if any

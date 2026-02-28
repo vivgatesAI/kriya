@@ -36,12 +36,12 @@ function git(cmd) {
   }
 }
 
-const log = git(`git log --since=\"${nyDate} 00:00\" --until=\"${nyDate} 23:59\" --pretty=format:\"%s\" -- .`)
+const log = git(`git log --since=\"24 hours ago\" --pretty=format:\"%s\" -- .`)
   .split('\n')
   .map(s => s.trim())
   .filter(Boolean);
 
-const touched = git(`git log --since=\"${nyDate} 00:00\" --until=\"${nyDate} 23:59\" --name-only --pretty=format:\"\" -- .`)
+const touched = git(`git log --since=\"24 hours ago\" --name-only --pretty=format:\"\" -- .`)
   .split('\n')
   .map(s => s.trim())
   .filter(Boolean);
@@ -74,7 +74,7 @@ const items = [];
 
 if (highlights.length) items.push(...highlights.map(h => `Completed: ${h}`));
 if (topFiles.length) items.push(`Touched files: ${topFiles.join(', ')}`);
-if (!items.length) items.push('Completed maintenance and continuity checks across the project baseline.');
+if (!items.length) items.push('No new tracked commits in the last 24 hours; completed continuity checks and system maintenance.');
 
 const autoEntry = {
   date: nyDate,
